@@ -2,7 +2,7 @@
   <h1 class="page-title">
     <a href="https://github.com/Jacobs63/vue3-tabs-component">Vue-tabs-component</a>
   </h1>
-  <tabs>
+  <tabs ref="tabs" :options="{ useUrlFragment: false }" :switchTab="switchTab">
     <tab name="First tab">
       <h2 class="page-subtitle">First tab</h2>
       This is the content of the first tab.
@@ -46,3 +46,25 @@
     Maintained by <a href="https://jakubpotocky.sk">Jakub Potocký</a>
   </small>
 </template>
+
+<script>
+import { onMounted } from 'vue';
+
+  export default {
+    methods: {
+      switchTab(tab) {
+        const tabNumber = document.querySelector('#tab-number').value;
+        this.$refs.tabs.switchTab(tabNumber);
+        return tab;
+      }
+    },
+    mounted() {
+      const link = document.querySelector('#switch-tab');
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.switchTab(4);
+      });
+    }
+  }
+</script>
