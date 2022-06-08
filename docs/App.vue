@@ -48,7 +48,6 @@
 </template>
 
 <script>
-import { onMounted } from 'vue';
 
   export default {
     methods: {
@@ -63,7 +62,6 @@ import { onMounted } from 'vue';
       link.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        this.switchTab(4);
       });
     }
   }
