@@ -144,6 +144,15 @@ export default {
       return state.tabs.find(tab => tab.hash === hash);
     }
 
+    const switchTab = (tabToSwitch) => {
+      if (tabToSwitch < state.tabs.length) {
+        const switchTabHash = state.tabs[tabToSwitch].hash;
+        if (switchTabHash) {
+          selectTab(switchTabHash);
+        }
+      }
+    }
+
     onMounted(() => {
       if (!state.tabs.length) {
         return;
@@ -175,7 +184,8 @@ export default {
     return {
       ...toRefs(state),
       selectTab,
-      findTab
+      findTab,
+      switchTab
     }
   }
 }
